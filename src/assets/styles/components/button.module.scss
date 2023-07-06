@@ -1,7 +1,25 @@
-.class-with-primary {
+@import "../abstracts/variables.scss";
 
+.defaultStyles {
+  border: none;
+  outline: none;
+  cursor: pointer;
 }
 
-.class-with-secondary {
-  
+.menuBurger {
+  height: 40px;
+  width: 40px;
+  padding: 10px;
+  border-radius: 50%;
+  background: #2642af;
+  transition: background-color .2s ease-in-out;
+  display: none;
+
+  &:hover {
+    background: #2f4dc7;
+  }  
+
+  @media screen and (max-width: 768px) {
+    display: block;
+  }
 }

@@ -3,10 +3,10 @@ import styles from "../../assets/styles/components/text.module.scss";
 import classnames from "classnames";
 
 export default function Text<E extends React.ElementType>({
-  as,
-  size,
+  children,
   color,
-  children
+  size,
+  as
 }: TextProps<E>) {
   const Component = as || "div";
 

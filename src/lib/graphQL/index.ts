@@ -1,6 +1,23 @@
-import { ApolloClient, InMemoryCache } from "@apollo/client";
+import { 
+  ApolloClient, 
+  ApolloLink, 
+  HttpLink, 
+  InMemoryCache 
+} from "@apollo/client";
+
+const rickAndMortyLink = new HttpLink({
+  uri: process.env.REACT_APP_RICKANDMORTY_URI
+});
+
+const graphqlzeroLink = new HttpLink({
+  uri: process.env.REACT_APP_GRAPHQLZERO_URI
+}); 
 
 export const apolloClient = new ApolloClient({
-  uri: process.env.REACT_APP_GRAPHQL_URI,
+  link: ApolloLink.split(
+    operation => operation.getContext().clientName === "rickAndMorty",
+    rickAndMortyLink,
+    graphqlzeroLink
+  ),
   cache: new InMemoryCache()
 });

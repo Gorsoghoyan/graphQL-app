@@ -1,5 +1,6 @@
 import { ButtonProps } from "../../types";
 import styles from "../../assets/styles/components/button.module.scss";
+import classnames from "classnames";
 
 export default function Button({
   variant,
@@ -7,7 +8,13 @@ export default function Button({
   ...rest
 }: ButtonProps) {
   return (
-    <button className={styles[variant]} {...rest}>
+    <button 
+      {...rest}
+      className={classnames(
+        styles.defaultStyles,
+        styles[variant]
+      )} 
+    >
       {children}
     </button>
   );

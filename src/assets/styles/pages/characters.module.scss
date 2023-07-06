@@ -1,0 +1,39 @@
+@import "../abstracts/variables.scss";
+
+.container {
+  text-align: center;
+  padding: 40px 0;
+
+  .characters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 40px 25px;
+    margin-top: 10px;
+    gap: 30px;
+
+    .characterItem {
+      min-width: 300px;
+      border-radius: 20px;
+      box-shadow: 5px 15px 20px rgba(0, 0, 0, 0.213);
+      overflow: hidden;
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 697px) {
+  .container {
+    .characters {
+      padding: 40px 0;
+
+      .characterItem {
+        min-width: none;
+        width: 80%;
+      }
+    }
+  }
+}

@@ -1,39 +1,28 @@
 import { gql } from "@apollo/client";
 
 export const GET_CHARACTERS = gql`
-  query getCharacters($page: Int) {
-    characters(page: $page) {
+  query getCharacters {
+    characters {
       results {
         id
         name
         image
-        location {
-          name
-        }
-        episode {
-          episode
-          name
-        }
-      }
-      info {
-        count
-        next
-        pages
-        prev
+        episode { name }
+        location { name }
       }
     }
   }
 `;
 
-export const GET_CHARACTER = gql`
-  query getCharacter($characterId: ID!) {
-    character(id: $characterId) {
+export const CREATE_TODO = gql`
+  mutation createTodo($title: string!, $completed: boolean!) {
+    createTodo(input: {
+      title: $title,
+      completed: $completed
+    }) {
       id
-      name
-      image
-      location {
-        name
-      }
+      title
+      completed
     }
   }
 `;

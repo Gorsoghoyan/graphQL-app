@@ -1,0 +1,14 @@
+.defaultStyles {
+  list-style-type: none;
+}
+
+.navbar {
+  display: flex;
+  gap: 30px;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    flex-direction: column;
+    gap: 0;
+  }
+}
