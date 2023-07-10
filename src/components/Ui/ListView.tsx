@@ -1,9 +1,9 @@
 import { AbstractItemType, ListViewProps } from "../../types";
-import styles from "../../assets/styles/components/ListView.module.scss";
+import styles from "../../assets/styles/components/listView.module.scss"; 
 import classnames from "classnames";
 
 export default function ListView<
-  T extends AbstractItemType
+  T extends AbstractItemType  
 >({ variant, items, render }: ListViewProps<T>) {
   return (
     <ul className={classnames(

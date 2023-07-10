@@ -1,9 +1,5 @@
 
-// Characters types
-export type CharacterItemProps = {
-  id: string;
-  name: string;
-  image: string;
-};  
-
-export type CharacterType = CharacterItemProps;
+export type DetailsItemProps = {
+  title: string; 
+  value: string;
+};

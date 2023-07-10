@@ -1,0 +1,27 @@
+@import "../abstracts/variables.scss";
+
+.wrapper {
+  position: relative;
+  min-height: calc(100vh - $header-height);
+  margin-top: $header-height;
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+  gap: 30px;
+}
+
+@media screen and (max-width: $media-mobile) {
+  .wrapper {
+    min-height: calc(100vh - $header-mobile-height);
+    margin-top: $header-mobile-height;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .wrapper {
+    flex-direction: column;
+    align-items: center;
+    justify-content: stretch;
+    gap: 50px;
+  }
+}

@@ -1,0 +1,15 @@
+@import "../abstracts/mixins.scss";
+@import "../abstracts/variables.scss";
+
+.container {
+  @include sidebar-content;
+
+  .header {
+    span {
+      text-decoration: underline;
+      text-decoration-color: $app-color1;
+      color: $app-color1;
+      cursor: pointer;
+    }
+  }
+}

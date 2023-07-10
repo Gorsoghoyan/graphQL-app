@@ -4,13 +4,40 @@ export type {
   TextProps,
   ListViewProps,
   AbstractItemType,
-  MenuBurgerProps,
-  ImageDivProps
+  ImageDivProps,
+  CardListProps,
+  CardTypes,
+  SpinnerProps,
+  ErrorMessageProps,
+  PageWrapperProps,
+  PaginationProps,
+  CharacterFiltersProps,
+  SelectBoxProps,
+  PickSelectProps
 } from "./components";
 
 export type {
-  CharacterType,
-  CharacterItemProps
+  NavbarProps,
+  MenuItemProps,
+  SidebarProps,
+  OnClick
+} from "./layouts";
+
+export type { 
+  DetailsItemProps
 } from "./pages";
 
-export type { PersistentStorage } from "./services";
+export type {
+  FilterObjectType
+} from "./hooks";
+
+export type { 
+  NavbarItemType, 
+  CharacterDetailsType,
+  SelectsConfigType
+} from "./configs";
+
+export type {
+  FiltersType,
+  OptionsType
+} from "./general";

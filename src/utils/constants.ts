@@ -1,6 +1,7 @@
 
 export const ROUTES = {
   CHARACTERS: "",
-  TODOS: "todos",
+  EPISODES: "episodes",
+  LOCATIONS: "locations",
   CHARACTER: "character"
 };

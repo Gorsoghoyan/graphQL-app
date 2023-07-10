@@ -1,0 +1,18 @@
+.loader {
+  border-top-color: transparent !important;
+  border-radius: 50%;
+  animation: loading .8s ease infinite;
+  margin: auto;
+}
+
+@keyframes loading {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+.primary {
+  @media screen and (max-width: 1400px) {
+    margin: 100px auto 0 auto;
+  }
+}

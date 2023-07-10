@@ -1,0 +1,50 @@
+@import "../abstracts/mixins.scss";
+@import "../abstracts/variables.scss";
+
+.container {
+  min-height: 100vh;
+  padding: 30px 0;
+  @include flex-center;
+
+  .character {
+    display: flex;
+    gap: 40px;
+
+    .img {
+      border-radius: 10px;
+    }
+
+    .details {
+      color: $app-color2;
+  
+      h2 {
+        margin-bottom: 40px;
+        
+      }
+  
+      p {
+        font-size: 17px;
+  
+        span {
+          font-size: 16px;
+          margin-left: 5px;
+          color: rgb(93, 93, 93);
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1070px) {
+  .container {
+    .character {
+      width: 70%;
+      flex-direction: column;
+
+      .img {
+        width: 100% !important;
+        height: 400px !important;
+      }
+    }
+  }
+}

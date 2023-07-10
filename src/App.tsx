@@ -1,11 +1,12 @@
 import { Suspense } from "react";
-import { router } from "./routes";
+import { router } from "./router";
 import { RouterProvider } from "react-router-dom";
-import "./assets/styles/abstracts/reset.scss";
+import { LazyLoading } from "./components";
+import "./assets/styles/app.scss";
 
 export default function App() {
   return (
-    <Suspense fallback={<div>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA...............</div>}>
+    <Suspense fallback={<LazyLoading />}>
       <RouterProvider router={router} />
     </Suspense>
   );

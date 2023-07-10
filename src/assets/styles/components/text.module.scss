@@ -1,7 +1,23 @@
 @import "../abstracts/variables.scss";
 
-.appColor1 {  
+.appColor1 {
   color: $app-color2;
+}
+
+.errorMessage {
+  color: rgb(224, 0, 0);
+}
+
+.Alive {
+  background: rgb(0, 171, 0);
+}
+
+.Dead {
+  background: rgb(214, 0, 0);
+}
+
+.unknown {
+  background: rgb(136, 136, 136);
 }
 
 .sm {

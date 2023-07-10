@@ -1,0 +1,18 @@
+.sidebar {
+  width: 30%;
+  padding-top: 100px;
+}
+
+@media screen and (max-width: 1400px) {
+  .sidebar {
+    width: 500px;
+    padding-top: 0;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .sidebar {
+    width: 100%;
+    padding: 0 30px;
+  }
+}

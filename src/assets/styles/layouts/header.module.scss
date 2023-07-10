@@ -1,0 +1,136 @@
+@import "../abstracts/mixins.scss";
+@import "../abstracts/variables.scss";
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: $header-height;
+  @include flex-between;
+  padding: 0 80px 0 40px;
+  background: $app-color2;
+  color: white;
+  z-index: 90;
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 25px;
+
+    svg {
+      font-size: 35px;
+      color: $app-color1;
+    }
+  }
+
+  .navbar {
+    .navmenu {
+      display: flex;
+      align-items: center;
+
+      .navmenuHeader {
+        height: calc($header-mobile-height - 1px);
+        color: rgb(70, 70, 70);
+        display: none;
+
+        .flex {
+          width: 100%;
+          height: 100%;
+          @include flex-between;
+          padding: 0 15px;
+
+          svg {
+            font-size: 25px;
+            cursor: pointer;
+          }
+        }
+
+        hr {
+          border: none;
+          border-bottom: 1px solid rgba(174, 174, 174, 0.585);
+        }
+      }
+
+      .listItem {
+        display: flex;
+        align-items: center;
+        font-size: 17px;
+        gap: 5px;
+
+        &.active {
+          color: $app-color1;
+        }
+
+        svg {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $media-mobile) {
+  .header {
+    height: $header-mobile-height;
+    padding: 0 25px;
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      visibility: hidden;
+      background: transparent;
+      transition: background-color .3s ease-in-out, visibility .3s ease-in-out;
+      z-index: 100;
+
+      &.expanded {
+        background: rgba(0, 0, 0, 0.534);
+        visibility: visible;
+
+        .navmenu {
+          right: 0;
+        }
+      }
+
+      .navmenu {
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: -300px;
+        width: 300px;
+        background: white;
+        transition: right .3s ease-in-out;
+
+        .navmenuHeader {
+          display: block;
+        }
+
+        .listItem {
+          width: 100%;
+          display: flex;
+          justify-content: start;
+          padding: 25px 15px;
+          color: rgb(91, 91, 91);
+
+          &.active {
+            background: $app-color1;
+            color: white;
+
+            &:hover {
+              background: $app-color1;
+            }
+          }
+
+          &:hover {
+            background: rgb(237, 237, 237);
+          }
+        }
+      }
+    }
+  }
+}

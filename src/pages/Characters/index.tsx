@@ -1,32 +1,58 @@
-import { Text } from "../../components";
+import { Sidebar } from "../../layouts";
 import { useCharacters } from "../../hooks";
-import { CharacterType } from "../../types";
-import CharacterItem from "./CharacterItem";
-import styles from "../../assets/styles/pages/characters.module.scss";
+import CharacterFilters from "../../components/CharacterFilters";
+
+import { 
+  PageWrapper, 
+  CharacterCardList, 
+  CharacterCard, 
+  Pagination
+} from "../../components";
 
 export default function Characters() {
-  const { error, loading, data } = useCharacters();
-
-  if (loading) return <div>Loading...</div>
-  if (error) return <div>{error.message}</div>;
+  const { 
+    data, 
+    error, 
+    loading, 
+    page,
+    status,
+    gender,
+    species,
+    handlePageChange,
+    handleFilterChange,
+  } = useCharacters();
 
   return (
-    <main className={styles.container}>
-      <Text as="h1" color="appColor2" size="lg">
-        Characters
-      </Text>
-      <section className={styles.characters}>
-        {data.characters.results.map(
-          (character: CharacterType) => (
-            <CharacterItem
-              key={character.id}
-              id={character.id}
-              name={character.name}
-              image={character.image}
-            />
-          )
+    <PageWrapper error={error} loading={loading}>
+      <Sidebar>
+        <CharacterFilters 
+          status={status}
+          gender={gender}
+          species={species}
+          onChange={handleFilterChange}
+        />
+      </Sidebar>
+      <CharacterCardList
+        listOfData={data?.characters.results}
+        renderItem={(item) => (
+          <CharacterCard
+            key={item.id}
+            id={item.id}
+            name={item.name}
+            image={item.image}
+            status={item.status}
+            location={item.location}
+          />
         )}
-      </section>
-    </main>
+      >
+        <Pagination 
+          totalPagesNumber={data?.characters.info.pages}
+          currentPage={page} 
+          onPageChange={(pageNumber) => {
+            handlePageChange(pageNumber);
+          }}
+        />
+      </CharacterCardList>
+    </PageWrapper>
   );
 }

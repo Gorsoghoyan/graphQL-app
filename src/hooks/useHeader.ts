@@ -1,17 +1,20 @@
-import { useState, useCallback } from "react";
-import { useScroll } from "./";
+import { useEffect, useState } from "react";
 
 export const useHeader = () => {
   const [isNavExpanded, setIsNavExpanded] = useState(false);
 
-  useScroll(() => setIsNavExpanded(false));
+  useEffect(() => {
+    window.document.body.style.overflow = isNavExpanded
+      ? "hidden"
+      : "visible";
+  }, [isNavExpanded]);
 
-  const handleMenuToggle = useCallback((): void => {
-    setIsNavExpanded(prev => !prev);
-  }, []);
+  const handleMenuToggle = (toggle: boolean) => {
+    setIsNavExpanded(toggle);
+  };
 
   return {
     isNavExpanded,
     handleMenuToggle
-  }
+  };
 };

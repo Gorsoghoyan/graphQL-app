@@ -1,13 +1,17 @@
+@import "../abstracts/variables.scss";
+
 .defaultStyles {
   list-style-type: none;
 }
 
 .navbar {
   display: flex;
+  overflow: auto;
   gap: 30px;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: $media-mobile) {
     width: 100%;
+    height: calc(100vh - $header-mobile-height - 1px);
     flex-direction: column;
     gap: 0;
   }

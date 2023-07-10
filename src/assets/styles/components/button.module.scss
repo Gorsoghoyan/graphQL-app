@@ -6,9 +6,9 @@
   cursor: pointer;
 }
 
-.menuBurger {
-  height: 40px;
-  width: 40px;
+.circle {
+  height: 35px;
+  width: 35px;
   padding: 10px;
   border-radius: 50%;
   background: #2642af;
@@ -19,7 +19,29 @@
     background: #2f4dc7;
   }  
 
-  @media screen and (max-width: 768px) {
+  svg {
+    color: white;
+    font-size: 16px;
+  }
+
+  @media screen and (max-width: $media-mobile) {
     display: block;
+  }
+}
+
+.fetchMore {
+  width: 400px;
+  font-size: 17px;
+  padding: 15px 0;
+  border-radius: 4px;
+  background: $app-color1;
+  color: white;
+
+  &:hover {
+    background: #2785ff;
+  }
+
+  &:disabled {
+    background: #6aaaff;
   }
 }

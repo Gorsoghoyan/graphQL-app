@@ -4,6 +4,7 @@ import classnames from "classnames";
 
 export default function Text<E extends React.ElementType>({
   children,
+  background,
   color,
   size,
   as
@@ -13,7 +14,8 @@ export default function Text<E extends React.ElementType>({
   return (
     <Component className={classnames(
       styles[size || ""],
-      styles[color || ""]
+      styles[color || ""],
+      styles[background || ""]
     )}>
       {children}
     </Component>

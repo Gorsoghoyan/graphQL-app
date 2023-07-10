@@ -1,0 +1,74 @@
+@import "../abstracts/mixins.scss";
+@import "../abstracts/variables.scss";
+
+.item,
+.break {
+  width: 40px;
+  height: 40px;
+  font-size: 14px;
+  margin: 0 10px;
+  border: 1px solid rgb(206, 206, 206);
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(192, 192, 192, 0.201);
+  }
+
+  a {
+    color: $app-color1;
+  }
+
+  &.previous,
+  &.next {
+    width: 60px;
+    background: $app-color1;
+    border: none;
+
+    &:hover {
+      background: #1876f2e8;
+    }
+
+    a {
+      color: white;
+    }
+  }
+}
+
+.break {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.disabledPage {
+  background: #1876f2be !important;
+}
+
+.active {
+  background: $app-color1;
+  
+  &:hover {
+    background: #1876f2e8;
+  }
+  
+  a {
+    color: white;
+  }
+}
+
+.pagination {
+  @include flex-center;
+  list-style-type: none;
+  margin: 20px 0;
+
+  li {
+    a {
+      width: 100% !important;
+      height: 100% !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
