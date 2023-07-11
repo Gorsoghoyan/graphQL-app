@@ -1,17 +1,24 @@
+import { useState, useCallback } from "react";
 import { useQuery } from "@apollo/client";
-import { GET_LOCATIONS } from "../utils/gqlQueries";
+import { GET_LOCATION } from "../utils/gqlQueries";
 
 export const useLocations = () => {
-  const { error, loading, data } = useQuery(GET_LOCATIONS, {
-    variables: { page: 1 },
-    notifyOnNetworkStatusChange: true
+  const [locationId, setLocationId] = useState(1);
+
+  const { error, loading, data } = useQuery(GET_LOCATION, {
+    variables: { id: locationId }
   });
 
-  console.log(data)
+  const handleChangeId = useCallback((id: number) => {
+    if (id === locationId) return;
+    setLocationId(id);
+  }, [locationId]);
 
   return {
     error,
     loading,
-    data
+    data,
+    locationId,
+    handleChangeId
   };
 };

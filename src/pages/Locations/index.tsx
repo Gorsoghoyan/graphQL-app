@@ -9,17 +9,26 @@ import {
 } from "../../components";
 
 export default function Locations() {
-  const { error, loading, data } = useLocations();
+  const { 
+    error, 
+    loading, 
+    data, 
+    locationId,
+    handleChangeId 
+  } = useLocations();
 
   return (
     <PageWrapper error={error} loading={loading}>
       <Sidebar>
-        {/* <PickSelect 
-          title="Location"
-        /> */}
+        <PickSelect 
+          title="Locations"
+          currentValue={locationId}
+          total={data?.locations.info.count}
+          onChange={handleChangeId}
+        />
       </Sidebar>
       <CharacterCardList
-        listOfData={data?.locations?.results[0].residents}
+        listOfData={data?.location.residents}
         renderItem={(item) => (
           <CharacterCard
             key={item.id}
@@ -28,7 +37,6 @@ export default function Locations() {
             image={item.image}
             status={item.status}
             location={item.location}
-            linkWork={false}
           />
         )}
       />

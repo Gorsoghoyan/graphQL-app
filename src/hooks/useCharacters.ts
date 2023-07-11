@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { useQuery } from "@apollo/client";
+import { useState, useCallback } from "react";
 import { GET_CHARACTERS } from "../utils/gqlQueries";
+import { useQuery } from "@apollo/client";
 import { FiltersType } from "../types";
 
 export const useCharacters = () => {
@@ -9,7 +9,8 @@ export const useCharacters = () => {
   const [gender, setGender] = useState("");
   const [species, setSpecies] = useState("");
 
-  const { data, error, loading } = useQuery(GET_CHARACTERS, {
+  const { data, error, loading } = useQuery(
+    GET_CHARACTERS, {
     variables: {
       page,
       filter: {
@@ -20,24 +21,26 @@ export const useCharacters = () => {
     }
   });
 
-  const handlePageChange = (pageNumber: number) => {
+  const handlePageChange = useCallback((
+    pageNumber: number
+  ) => {
     setPage(pageNumber);
-  };
+  }, []);
 
-  const handleFilterChange = (
-    filter: FiltersType, 
+  const handleFilterChange = useCallback((
+    filter: FiltersType,
     newValue: string
   ) => {
     setPage(1);
     switch (filter) {
       case "status":
         return setStatus(newValue);
-      case "gender": 
+      case "gender":
         return setGender(newValue);
       case "species":
         return setSpecies(newValue);
     }
-  };
+  }, []);
 
   return {
     data,

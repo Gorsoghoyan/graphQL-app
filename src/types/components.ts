@@ -69,7 +69,6 @@ export type CardTypes = {
   location: {
     name: string;
   };
-  linkWork?: boolean;
 };
 
 // Spinner types
@@ -116,5 +115,7 @@ export type SelectBoxProps = {
 // PickSelect types
 export type PickSelectProps = {
   total: number;
-  title: "Location" | "Episodes";
+  currentValue: number;
+  title: "Locations" | "Episodes";
+  onChange: (newValue: number) => void;
 };

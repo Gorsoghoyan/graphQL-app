@@ -1,8 +1,14 @@
 import { gql } from "@apollo/client";
 
 export const GET_CHARACTERS = gql`
-  query getCharacters($page: Int!, $filter: FilterCharacter) {
-    characters(page: $page, filter: $filter) {
+  query getCharacters(
+    $page: Int!, 
+    $filter: FilterCharacter
+  ) {
+    characters(
+      page: $page, 
+      filter: $filter
+    ) {
       results {
         id
         name
@@ -35,41 +41,42 @@ export const GET_CHARACTER = gql`
   }
 `;
 
-export const GET_EPISODES = gql`
-  query getEpisodes($page: Int!) {
-    episodes(page: $page) {
-      results {
+export const GET_EPISODE = gql`
+  query getEpisode($id: ID!) {
+    episodes {
+      info {
+        count
+      }
+    }
+    episode(id: $id) {
+      characters {
         id
         name
-        air_date
-        characters {
-          id
+        image
+        status
+        location {
           name
-          image
-          status
-          location {
-            name
-          }
         }
       }
     }
   }
 `;
 
-export const GET_LOCATIONS = gql`
-  query getLocations($page: Int!) {
-    locations(page: $page) {
-      results {
+export const GET_LOCATION = gql`
+  query getLocation($id: ID!) {
+    locations {
+      info {
+        count
+      }
+	  }
+    location(id: $id) {
+      residents {
         id
         name
-        residents {
-          id
+        image
+        status
+        location {
           name
-          image
-          status
-          location {
-            name
-          }
         }
       }
     }

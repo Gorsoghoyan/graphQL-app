@@ -1,17 +1,24 @@
+import { useState, useCallback } from "react";
 import { useQuery } from "@apollo/client";
-import { GET_EPISODES } from "../utils/gqlQueries";
+import { GET_EPISODE } from "../utils/gqlQueries";
 
 export const useEpisodes = () => {
-  const { error, loading, data } = useQuery(GET_EPISODES, {
-    variables: { page: 3 },
-    notifyOnNetworkStatusChange: true
+  const [episodeId, setEpisodeId] = useState(1);
+
+  const { error, loading, data } = useQuery(GET_EPISODE, {
+    variables: { id: episodeId }
   });
 
-  console.log(data)
+  const handleChangeId = useCallback((id: number) => {
+    if (id === episodeId) return;
+    setEpisodeId(id);
+  }, [episodeId]);
 
   return {
     error,
     loading,
-    data
+    data,
+    episodeId,
+    handleChangeId
   };
 };

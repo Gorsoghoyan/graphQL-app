@@ -9,18 +9,26 @@ import {
 } from "../../components";
 
 export default function Episodes() {
-  const { error, loading, data } = useEpisodes();
+  const { 
+    error, 
+    loading, 
+    data, 
+    episodeId,
+    handleChangeId 
+  } = useEpisodes();
 
   return (
     <PageWrapper error={error} loading={loading}>
       <Sidebar>
         <PickSelect 
-          total={52}
           title="Episodes"
+          currentValue={episodeId}
+          total={data?.episodes.info.count}
+          onChange={handleChangeId}
         />
       </Sidebar>
       <CharacterCardList
-        listOfData={data?.episodes?.results[0].characters}
+        listOfData={data?.episode.characters}
         renderItem={(item) => (
           <CharacterCard
             key={item.id}
@@ -29,7 +37,6 @@ export default function Episodes() {
             image={item.image}
             status={item.status}
             location={item.location}
-            linkWork={false}
           />
         )}
       />

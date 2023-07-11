@@ -10,11 +10,10 @@ export default function CharacterCard({
   image,
   status,
   location,
-  linkWork = true
 }: CardTypes) {
   return (
     <Link 
-      to={!linkWork ? "" : `${ROUTES.CHARACTER}/${id}`} 
+      to={`/${ROUTES.CHARACTER}/${id}`} 
       className={styles.card}
     >
       <div className={styles.imgWrapper}>
